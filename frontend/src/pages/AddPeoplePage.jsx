@@ -8,7 +8,7 @@ const AddPeoplePage = ({ addPeopleSubmit }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [gender, setGender] = useState("Female");
-  const [dob, setDob] = useState(null); // Initialize with null
+  const [dateOfBirth, setDateOfBirth] = useState(null); // Initialize with null
 
   const navigate = useNavigate();
 
@@ -19,11 +19,11 @@ const AddPeoplePage = ({ addPeopleSubmit }) => {
       firstName,
       lastName,
       gender,
-      dob: dob ? dob.toLocaleDateString() : "", // Convert date to string if selected
+      dateOfBirth: dateOfBirth ? dateOfBirth.toLocaleDateString() : "", // Convert date to string if selected
     };
     addPeopleSubmit(newPerson);
     toast.success("Member Added Successfully");
-    return navigate("/");
+    return navigate("/people-list");
   };
 
   return (
@@ -97,8 +97,8 @@ const AddPeoplePage = ({ addPeopleSubmit }) => {
               </label>
               <DatePicker
                 id="dob"
-                selected={dob}
-                onChange={(date) => setDob(date)}
+                selected={dateOfBirth}
+                onChange={(date) => setDateOfBirth(date)}
                 dateFormat="MM/dd/yyyy" // Date format
                 placeholderText="Select Date"
                 className="w-full px-3 py-2 border border-blue-400 rounded-md focus:outline-none focus:border-blue-500"
